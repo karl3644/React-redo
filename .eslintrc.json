@@ -1,0 +1,57 @@
+// basic eslint. recommended errors are a problem. not too strict
+// FIRST UPDATE BEFORE REACT ESLINT IS INSTALLED
+// {
+//   "extends": ["eslint:recommended", "prettier"],
+//   "plugins": [],
+//   "parserOptions": {
+//     "ecmaVersion": 2022,
+//     "sourceType": "module",
+//     "ecmaFeatures": {
+//       "jsx": true
+//     }
+//   },
+//   "env": {
+//     "es6": true,
+//     "browser": true,
+//     "node": true
+//   }
+// }
+
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier" // prettier ignores from eslint. prettier needs to be last
+  ],
+  "rules": {
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": 0
+  },
+  "plugins": ["react", "import", "jsx-a11y"],
+  "parserOptions": {
+    "ecmaVersion": 2022, // how modern is the js target
+    "sourceType": "module", // import & exports
+    "ecmaFeatures": {
+      "jsx": true // allow jsx
+    }
+  },
+  "env": {
+    // says what env we are working and to ignore stuff like __dirname, and what globals are available
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
+    }
+  }
+}
