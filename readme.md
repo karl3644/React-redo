@@ -23,16 +23,16 @@ add routes as follows
 
 ```
  const router = createBrowserRouter([
- {
- path: "/",
- element: <LandingPage name="land prop" />,
- errorElement: <ErrorPage />,
- },
- {
- path: "/Main",
- element: <Main />,
- errorElement: <ErrorPage />,
- },
+    {
+        path: "/",
+        element: <LandingPage name="land prop" />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: "/Main",
+        element: <Main />,
+        errorElement: <ErrorPage />,
+    },
  ]);
 ```
 
