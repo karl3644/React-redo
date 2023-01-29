@@ -21,19 +21,20 @@ at top level `import { createBrowserRouter, RouterProvider } from "react-router-
 
 add routes as follows
 
-> const router = createBrowserRouter([
->
-> > {
-> > path: "/",
-> > element: <LandingPage name="land prop" />,
-> > errorElement: <ErrorPage />,
-> > },
-> > {
-> > path: "/Main",
-> > element: <Main />,
-> > errorElement: <ErrorPage />,
-> > },
-> > ]);
+```
+ const router = createBrowserRouter([
+ {
+ path: "/",
+ element: <LandingPage name="land prop" />,
+ errorElement: <ErrorPage />,
+ },
+ {
+ path: "/Main",
+ element: <Main />,
+ errorElement: <ErrorPage />,
+ },
+ ]);
+```
 
 render `root.render(<RouterProvider router={router} />)` into root
 
