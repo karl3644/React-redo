@@ -1,6 +1,6 @@
 ### steps
 
-1. create html page with <div id="root">not rendered</div> & <script type="module" src="./App.jsx"></script>
+1. create html page with `<div id="root">not rendered</div> & <script type="module" src="./App.jsx"></script>`
 2. create App.jsx
 3. initializes node project `npm init -y`
 4. `npm i -D vite` & `npm i -D @vitejs/plugin-react`. add vite.config.js
