@@ -13,13 +13,43 @@
 3. `npm install -D eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react`. update eslintrc.json
 4. `npm install typescript --save-dev` & `npx tsc --init`. update tsconfig . `npm i -D @types/react @types/react-dom`
 
+## react router dom
+
+methods differ between different routers, choose a router on the react router docs. in this instance we are using `createBrowserRouter` which can handle new data APIs
+
+at top level `import { createBrowserRouter, RouterProvider } from "react-router-dom";`
+
+add routes as follows
+
+`const router = createBrowserRouter([`
+`  {`
+`    path: "/",`
+`    element: <LandingPage name="land prop" />,`
+`    errorElement: <ErrorPage />,`
+`  },`
+`  {`
+`path: "/Main",`
+`element: <Main />,`
+`errorElement: <ErrorPage />,`
+`},`
+`]);`
+
+render `root.render(<RouterProvider router={router} />)` into root
+
+When using link, add/remove `/` to have either none nested link, or nested
+
+`<Link to="/FakeShop">Test</Link>` direct `root/FakeShop`
+`<Link to="FakeShop">Test</Link>` through `root/main/FakeShop`
+
 ## app requirements/ideas
 
 - typescript
+- login/authentication
 - sass/css modules
 - TDD with vitest/jest
 - data fetching and caching
 - error boundaries. test with async try catch
+<!-- put in error handing for missing links -->
 - page to use react query? & page to use rtk?
 - hooks practice. useRef, useReducer, useMemo
 - code splitting (lazy & suspense)
