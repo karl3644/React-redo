@@ -5,10 +5,15 @@ export default function ErrorPage() {
   console.error(error);
   return (
     <div>
-      Page not found{" "}
-      <p>
-        <i>{error.statusText || error.message}</i>
-      </p>
+      <p>Page not found </p>
+      {/* <i>{error.statusText || error.message}</i> */}
+      {error.statusText ? (
+        <i>error.statusText: {error.statusText}</i>
+      ) : error.message ? (
+        <i>error.message: {error.message}</i>
+      ) : (
+        <i>No error</i>
+      )}
     </div>
   );
 }

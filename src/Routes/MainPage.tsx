@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import TopNavigation from "../Components/TopNavigation";
 
 export default function MainPage() {
   return (
     <>
       <div>MainPage</div>
-      <Link to="/FakeShop">Fake Shop</Link>
+      <TopNavigation />
+      <Outlet />
+      <p>Footer</p>
     </>
   );
 }

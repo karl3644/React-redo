@@ -1,8 +1,7 @@
 export default function FakeShop() {
   return (
     <>
-      <h1>FakeShop</h1>
-      <p>Body</p>
+      <h2>FakeShop</h2>
     </>
   );
 }

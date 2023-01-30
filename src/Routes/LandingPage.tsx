@@ -1,10 +1,7 @@
-import { Link } from "react-router-dom";
-
-export default function LandingPage(props) {
+export default function LandingPage() {
   return (
-    <>
-      <p>Landing page prop - {props.name}</p>
-      <Link to={"Main"}>Login</Link>
-    </>
+    <div>
+      <p>Landing page content</p>
+    </div>
   );
 }

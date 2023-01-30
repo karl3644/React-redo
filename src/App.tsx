@@ -1,17 +1,19 @@
 import { createRoot } from "react-dom/client";
 
 // Pages
-import LandingPage from "./Routes/LandingPage";
+import LoginPage from "./Routes/LoginPage";
 import MainPage from "./Routes/MainPage";
 import ErrorPage from "./Routes/ErrorPage";
 import FakeShop from "./Routes/FakeShop";
+import CRUD from "./Routes/CRUD";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LandingPage from "./Routes/LandingPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LandingPage name="land prop" />,
+    element: <LoginPage name="land prop" />,
     errorElement: <ErrorPage />,
   },
   // can use global errorPage
@@ -24,11 +26,23 @@ const router = createBrowserRouter([
     path: "/Main",
     element: <MainPage />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/FakeShop",
-    element: <FakeShop />,
-    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "Landing",
+        element: <LandingPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "FakeShop",
+        element: <FakeShop />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "CRUD",
+        element: <CRUD />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
 ]);
 
