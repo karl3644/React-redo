@@ -21,7 +21,7 @@ at top level `import { createBrowserRouter, RouterProvider } from "react-router-
 
 add routes as follows
 
-```
+```[javascript]
  const router = createBrowserRouter([
     {
         path: "/",
