@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function TopNavigation() {
-  const links = ["Landing", "FakeShop", "Crud"];
+  const links = ["Landing", "PetAdopt", "Crud"];
   return (
     <nav>
       <ul>

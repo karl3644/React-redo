@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import LoginPage from "./Routes/LoginPage";
 import MainPage from "./Routes/MainPage";
 import ErrorPage from "./Routes/ErrorPage";
-import FakeShop from "./Routes/FakeShop";
+import PetAdopt from "./Routes/PetAdopt";
 import CRUD from "./Routes/CRUD";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: "FakeShop",
-        element: <FakeShop />,
+        path: "PetAdopt",
+        element: <PetAdopt />,
         errorElement: <ErrorPage />,
       },
       {

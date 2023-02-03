@@ -40,8 +40,8 @@ render `root.render(<RouterProvider router={router} />)` into root
 
 When using link, add/remove `/` to have either none nested link, or nested
 
-`<Link to="/FakeShop">Test</Link>` direct `root/FakeShop`
-`<Link to="FakeShop">Test</Link>` through `root/main/FakeShop`
+`<Link to="/PetAdopt">Test</Link>` direct `root/PetAdopt`
+`<Link to="PetAdopt">Test</Link>` through `root/main/PetAdopt`
 
 ## app requirements/ideas
 
