@@ -1,61 +1,86 @@
 import { useState, useEffect } from "react";
+import useBreedList from "../CustomHooks/useBreedList";
 
 export default function PetAdopt() {
+  const [location, setLocation] = useState("");
   const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
   const [selectedAnimal, setSelectedAnimal] = useState("");
+  const [breedList] = useBreedList(selectedAnimal);
   const [selectedBreed, setSelectedBreed] = useState("");
-  // const apiURL = "http://pets-v2.dev-apis.com";
-  const [breedList, setBreedList] = useState([]);
+  const [pets, setPets] = useState([]);
 
-  // standard fetch
-  // let res;
-  // function standardFetch(url) {
-  //   fetch(url)
-  //     // parse to json
-  //     .then((res) => res.json())
-  //     // success
-  //     .then((data) => data)
-  //     // fail - catch the error
-  //     .catch((error) => console.error(error));
-  // }
-  // standardFetch(apiURL);
+  // const apiURL = "http://pets-v2.dev-apis.com";
+  // const apiURL = `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`;
 
   // or async await fetch
-  // async function asyncAwaitFetch(url) {
-  //   const itemData = await fetch(url);
-  //   const body = await itemData.json();
-  //   setItems(body);
-  //   // return body;
-  // }
+  async function requestPets() {
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${selectedAnimal}&location=${location}&breed=${selectedBreed}`
+    );
+    const json = await res.json();
+    setPets(json.pets);
+  }
 
   return (
     <>
-      <h2>PetAdopt</h2>
-      <h3>Animal</h3>
-      <select
-        value={selectedAnimal}
-        onChange={(e) => setSelectedAnimal(e.target.value)}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          requestPets();
+        }}
       >
-        <option value={""} />
-        {ANIMALS.map((animal) => (
-          <option key={animal} value={animal}>
-            {animal}
-          </option>
-        ))}
-      </select>
-      <h3>Breed</h3>
-      <select
-        value={selectedBreed}
-        onChange={(e) => setSelectedBreed(e.target.value)}
-        disabled={!breedList.length}
-      >
-        <option value={""} />
-        {breedList.map((breed) => (
-          <option key={breed} value={breed}>
-            {breed}
-          </option>
-        ))}
-      </select>
+        <h2>PetAdopt</h2>
+        <label htmlFor="location">Location</label>
+        <input
+          name="location"
+          id="location"
+          type="text"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+        <label htmlFor="selectedAnimal">Animal</label>
+        <select
+          name="selectedAnimal"
+          id="selectedAnimal"
+          value={selectedAnimal}
+          onChange={(e) => {
+            setSelectedAnimal(e.target.value);
+          }}
+        >
+          <option value={""} />
+          {ANIMALS.map((animal) => (
+            <option key={animal} value={animal}>
+              {animal}
+            </option>
+          ))}
+        </select>
+        <label htmlFor="selectedBreed">Breed</label>
+        <select
+          name="selectedBreed"
+          id="selectedBreed"
+          value={selectedBreed}
+          onChange={(e) => setSelectedBreed(e.target.value)}
+          disabled={!breedList.length}
+        >
+          <option value={""} />
+          {breedList.map((breed) => (
+            <option key={breed} value={breed}>
+              {breed}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Search</button>
+      </form>
+      <div id="petListContainer">
+        <h2>Pet List</h2>
+        <ul id="petList">
+          {pets.map((pet) => (
+            <li key={pet.id}>
+              {pet.name} - {pet.breed} - {`${pet.city}, ${pet.state}`}
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
