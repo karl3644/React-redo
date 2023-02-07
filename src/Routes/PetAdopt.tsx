@@ -5,12 +5,9 @@ export default function PetAdopt() {
   const [location, setLocation] = useState("");
   const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
   const [selectedAnimal, setSelectedAnimal] = useState("");
-  const [breedList] = useBreedList(selectedAnimal);
+  const [breedList, status] = useBreedList(selectedAnimal);
   const [selectedBreed, setSelectedBreed] = useState("");
   const [pets, setPets] = useState([]);
-
-  // const apiURL = "http://pets-v2.dev-apis.com";
-  // const apiURL = `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`;
 
   // or async await fetch
   async function requestPets() {
@@ -19,10 +16,12 @@ export default function PetAdopt() {
     );
     const json = await res.json();
     setPets(json.pets);
+    console.log(json.pets);
   }
 
   return (
     <>
+      {status}
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -45,6 +44,7 @@ export default function PetAdopt() {
           value={selectedAnimal}
           onChange={(e) => {
             setSelectedAnimal(e.target.value);
+            setSelectedBreed("");
           }}
         >
           <option value={""} />
@@ -74,6 +74,13 @@ export default function PetAdopt() {
       <div id="petListContainer">
         <h2>Pet List</h2>
         <ul id="petList">
+          {/*  Results component takes in pet list as props */}
+          {/* if no pets show loading */}
+          {/* pet list mapped out */}
+          {/* each pet is component which takes object and id. is used for useParams */}
+          {/* create top level route <Route path="/page/:id" element={<Component />} /> */}
+          {/* link to id on each pet mapped out */}
+
           {pets.map((pet) => (
             <li key={pet.id}>
               {pet.name} - {pet.breed} - {`${pet.city}, ${pet.state}`}

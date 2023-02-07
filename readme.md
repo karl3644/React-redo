@@ -45,13 +45,14 @@ When using link, add/remove `/` to have either none nested link, or nested
 
 ## app requirements/ideas
 
+- set abort controller onChange of animal
+- put in error handing for missing links
+- error boundaries. test with async try catch
 - typescript
 - login/authentication
 - sass/css modules
 - TDD with vitest/jest
 - data fetching and caching
-- error boundaries. test with async try catch
-<!-- put in error handing for missing links -->
 - page to use react query? & page to use rtk?
 - hooks practice. useRef, useReducer, useMemo
 - code splitting (lazy & suspense)
