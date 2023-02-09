@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useBreedList from "../CustomHooks/useBreedList";
+import Results from "../Components/Results";
 
 export default function PetAdopt() {
   const [location, setLocation] = useState("");
@@ -16,12 +17,14 @@ export default function PetAdopt() {
     );
     const json = await res.json();
     setPets(json.pets);
-    console.log(json.pets);
   }
+
+  useEffect(() => {
+    requestPets();
+  }, [selectedAnimal]);
 
   return (
     <>
-      {status}
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -73,20 +76,9 @@ export default function PetAdopt() {
       </form>
       <div id="petListContainer">
         <h2>Pet List</h2>
-        <ul id="petList">
-          {/*  Results component takes in pet list as props */}
-          {/* if no pets show loading */}
-          {/* pet list mapped out */}
-          {/* each pet is component which takes object and id. is used for useParams */}
-          {/* create top level route <Route path="/page/:id" element={<Component />} /> */}
-          {/* link to id on each pet mapped out */}
-
-          {pets.map((pet) => (
-            <li key={pet.id}>
-              {pet.name} - {pet.breed} - {`${pet.city}, ${pet.state}`}
-            </li>
-          ))}
-        </ul>
+        {/* create top level route <Route path="/page/:id" element={<Component />} /> */}
+        {/* link to id on each pet mapped out */}
+        <Results pets={pets} status={status} />
       </div>
     </>
   );
