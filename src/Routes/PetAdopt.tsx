@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext, createContext } from "react";
 import useBreedList from "../CustomHooks/useBreedList";
 import Results from "../Components/Results";
+import { PetContext } from "../Components/PetContext";
 
 export default function PetAdopt() {
   const [location, setLocation] = useState("");
@@ -8,7 +9,8 @@ export default function PetAdopt() {
   const [selectedAnimal, setSelectedAnimal] = useState("");
   const [breedList, status] = useBreedList(selectedAnimal);
   const [selectedBreed, setSelectedBreed] = useState("");
-  const [pets, setPets] = useState([]);
+  // const [pets, setPets] = useState([]);
+  const { pets, setPets } = useContext(PetContext);
 
   // or async await fetch
   async function requestPets() {
@@ -76,8 +78,6 @@ export default function PetAdopt() {
       </form>
       <div id="petListContainer">
         <h2>Pet List</h2>
-        {/* create top level route <Route path="/page/:id" element={<Component />} /> */}
-        {/* link to id on each pet mapped out */}
         <Results pets={pets} status={status} />
       </div>
     </>

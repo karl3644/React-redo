@@ -1,4 +1,6 @@
-export default function Pet({ pet }) {
+import { Link } from "react-router-dom";
+
+export default function Pet({ pet, id }) {
   // animal
   // breed
   // city
@@ -10,12 +12,14 @@ export default function Pet({ pet }) {
   const [img] = pet.images;
 
   return (
-    <>
-      <h3>{pet.name}</h3>
-      <p>
-        {pet.breed} - {pet.city} - {pet.state}
-      </p>
-      <img src={img} alt="img" />
-    </>
+    <Link to={`${id}`}>
+      <div className="pet">
+        <h3>{pet.name}</h3>
+        <p>
+          {pet.breed} - {pet.city} - {pet.state}
+        </p>
+        <img src={img} alt="img" />
+      </div>
+    </Link>
   );
 }

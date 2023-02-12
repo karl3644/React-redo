@@ -6,6 +6,7 @@ import MainPage from "./Routes/MainPage";
 import ErrorPage from "./Routes/ErrorPage";
 import PetAdopt from "./Routes/PetAdopt";
 import CRUD from "./Routes/CRUD";
+import PetProfile from "./Components/PetProfile";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./Routes/LandingPage";
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
       {
         path: "PetAdopt",
         element: <PetAdopt />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "PetAdopt/:id",
+        element: <PetProfile />,
         errorElement: <ErrorPage />,
       },
       {

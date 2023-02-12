@@ -2,3 +2,7 @@ img {
   width: 150px;
   border-radius: 50%;
 }
+
+.pet {
+  border-bottom: 1px black solid;
+}
